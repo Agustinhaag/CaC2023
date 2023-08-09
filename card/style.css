@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.dimensiones {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+:root {
+  --color-esp: rgb(240, 114, 233);
+}
+main{
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+}
+main .info {
+  background: white;
+  display: flex;
+  border-radius: 10px;
+  height: 100%;
+  width: 80%;
+  padding-bottom: 30px;
+}
+main .info .perfil {
+  width: 41%;
+  background: gainsboro;
+  border-radius: 15px;
+  margin: 50px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  min-width: 250px;
+  height: 70vh;
+}
+main .info .perfil img {
+  width: 85%;
+  height: 90%;
+}
+main .info .container-info {
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+  margin: 47px 70px 0 0;
+}
+main .info .container-info h3 {
+  font-size: 30px;
+  font-weight: normal;
+  text-decoration: 3px underline gainsboro;
+  text-underline-offset: 5px;
+  margin-bottom: 20px;
+}
+main .info .container-info p:nth-child(2) {
+  font-size: 40px;
+  font-weight: 600;
+  word-spacing: 4px;
+  margin-bottom: 20px;
+}
+main .info .container-info p label {
+  color: var(--color-esp);
+}
+main .info .container-info p:nth-child(3) {
+  font-size: 21px;
+  text-transform: uppercase;
+  color: rgb(54, 54, 54);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+main .info .container-info p:nth-child(4) {
+  font-size: 21px;
+  color: rgb(99, 98, 98);
+  width: 95%;
+  word-spacing: 3px;
+  margin-bottom: 40px;
+  line-height: 33px;
+}
+main .info .container-info p span {
+  color: rgb(32, 32, 32);
+  font-weight: 600;
+}
+main .info .container-info .container-btn-info a {
+  text-decoration: none;
+  border: 1px solid rgb(22, 22, 22);
+  color: rgb(22, 22, 22);
+  background: none;
+  padding: 13px 30px;
+  border-radius: 35px;
+}
+main .info .container-info .container-btn-info a:hover {
+  background: var(--color-esp);
+  color: white;
+  transition: 0.4s;
+}
+
+@media (max-width: 868px){
+   main .info {
+    flex-direction: column;
+    align-items: center;
+  }
+  main .info .perfil {
+    width: 50%;
+    height: 300px;
+  }
+  main .info .container-info {
+    width: 100%;
+    margin-top: 40px;
+    padding: 0 0 0 80px;
+  }
+  main .info .container-info .container-btn-info {
+    display: flex;
+    justify-content: center;
+  }
+}
