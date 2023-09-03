@@ -1,0 +1,38 @@
+[
+  {
+    "id":1,
+    "image": "./img/conitos.jpg",
+    "title": "CONITOS",
+    "description": "Una deliciosa opción para acompañar las meriendas, ese antojo de media nocheo compartir con amigos"
+  },
+  {
+    "id": 2,
+    "image": "./img/pepas.jpg",
+    "title": "PEPAS",
+    "description": "Las galletitas mas tiernas y ricas, rellenas de dulce de leche, ideales para el mate y la hora del té"
+  },
+  {
+    "id": 3,
+    "image": "./img/torta.jpg",
+    "title": "TORTA NUTT",
+    "description": "La torta de tres capas mas sabrosas del mundo, combina una base de vainilla, dulce de leche y cubierta de choconutt"
+  },
+  {
+    "id": 4,
+    "image": "./img/Trufas.jpg",
+    "title": "TRUFAS",
+    "description": "Las clásicas trufas de dulce de leche y galletas de chocolate semiamargo a las que es imposible resistirse"
+  },
+  {
+    "id": 5,
+    "image": "./img/budin.jpg",
+    "title": "BUDIN",
+    "description": "Budin de chocolate, super esponjoso y exquisito. El compañero perfecto de una buena merienda."
+  },
+  {
+    "id": 6,
+    "image": "./img/chocotorta.jpg",
+    "title": "CHOCOTORTA",
+    "description": "Una deliciosa torta, elaborada con el mas exquisito dulce de leche ideal para acompañar las merienda"
+  }
+]

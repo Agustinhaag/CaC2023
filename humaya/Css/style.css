@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 header {
-  background-image: url(/humaya/img/imagenCentral.png);
+  background-image: url(../img/imagenCentral.png);
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -316,21 +316,87 @@ main .contact .contact-form form .cont-btn {
   justify-content: center;
   margin-top: 35px;
 }
-main .container-card {
+
+section .contenedor-indicadores {
   display: flex;
   width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 30px;
-  justify-content: space-between;
+  padding-bottom: 10px;
   background: var(--colorProducto);
+  justify-content: flex-end;
 }
-main .container-card .card {
-  width: 32%;
+section .contenedor-indicadores .indicadores {
+  margin-right: 10px;
+}
+section .contenedor-indicadores .indicadores button {
+  background: rgb(100, 100, 100);
+  height: 4px;
+  width: 13px;
+  cursor: pointer;
+  border: none;
+  margin-right: 2px;
+}
+section .contenedor-indicadores .indicadores button:hover,
+section .contenedor-indicadores .indicadores button.activo {
+  background: rgb(206, 177, 124);
+}
+section .contenedor-principal {
   display: flex;
-  flex-direction: column;
-  margin: 0 20px;
+  width: 100%;
+  align-items: center;
+  position: relative;
 }
+section .contenedor-principal .flecha-izquierda,
+section .contenedor-principal .flecha-derecha {
+  position: absolute;
+  border: none;
+  background:rgb(209, 209, 209) ;
+  font-size: 12px;
+  top: calc(50% -25%);
+  height: 8%;
+  width: 30px;
+  color: rgb(0, 0, 0);
+  z-index: 400;
+  transition: 0.2s;
+}
+section .contenedor-principal .flecha-izquierda {
+  left: 0;
+}
+section .contenedor-principal .flecha-derecha {
+  right: 0;
+}
+section .contenedor-principal .flecha-izquierda:hover,
+section .contenedor-principal .flecha-derecha:hover {
+  cursor: pointer;
+  background:rgb(255, 255, 255) ;
+}
+section .contenedor-principal .container-carrusel{
+  width: 100%;
+  overflow: hidden;
+   background: var(--colorProducto);
+  scroll-behavior: smooth;
+}
+section .contenedor-principal .container-carrusel .container-card {
+  display: flex;
+   height: 100%;
+  margin: 0 auto 20px auto;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+section
+  .contenedor-principal
+  .container-carrusel
+  .container-card
+  .card {
+   display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  height: 100%;
+min-width: 33%; 
+scroll-snap-align: start;
+}
+
 main .container-card .card .card-img {
   height: 40vh;
 }
@@ -528,15 +594,18 @@ flex-direction: column;
 main .contact .contact-form{
 width: 100%;
 }
-main .container-card{
+main .contenedor-principal .container-carrusel .container-card{
   flex-direction: column;
   align-items: center;
 }
 main .container-card .card{
-  width: 55%;
-  padding-bottom: 20px;
-  min-width: 240px;
+  width: 60%;
+  margin: 20px 0;
+  min-width: 300px !important;
 }
+section .contenedor-indicadores, .contenedor-principal .flecha-izquierda, .contenedor-principal .flecha-derecha{
+  display: none;
+} 
 main .container-card .card .card-img{
   height: 55vh;
 }
@@ -554,6 +623,8 @@ footer .container-footer .container-img-footer img{
   min-width: 70px;
 }
 }
+
+
 
 
 
