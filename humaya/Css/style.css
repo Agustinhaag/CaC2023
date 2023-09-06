@@ -1,5 +1,5 @@
-:root{
-   --colorProducto: rgb(59, 59, 59);
+:root {
+  --colorProducto: rgb(59, 59, 59);
 }
 * {
   margin: 0;
@@ -24,17 +24,18 @@ header nav {
   width: 50%;
   padding-left: 30px;
   display: flex;
-   align-items: center;
+  align-items: center;
 }
-.mostrar, .ocultar{    
-    display: none;
-    transition: 0.4s;
+.mostrar,
+.ocultar {
+  display: none;
+  transition: 0.4s;
 }
-nav .container-logo{
+nav .container-logo {
   display: flex;
-   align-items: center;
+  align-items: center;
 }
-nav .container-logo img{
+nav .container-logo img {
   position: relative;
 }
 header nav .container-nav {
@@ -44,7 +45,7 @@ header nav .container-nav {
   padding-left: 30px;
   justify-content: space-between;
 }
-header nav .container-nav  a {
+header nav .container-nav a {
   color: white;
   position: relative;
   text-decoration: none;
@@ -54,13 +55,13 @@ header nav .container-nav a:hover {
   text-decoration: underline 2px white;
   text-underline-offset: 5px;
 }
-header .container-text-header{
+header .container-text-header {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   min-height: 85vh;
-height: 100%;
+  height: 100%;
 }
 header .container-text-header div {
   width: 35%;
@@ -149,59 +150,137 @@ main .banner article {
 }
 main .banner article .container-img-banner {
   min-width: 50%;
-  
- line-height: 0;
+
+  line-height: 0;
 }
 main .banner article .container-img-banner img {
   width: 100%;
   height: 100%;
 }
-main .banner article .container-card-banner {
+main .banner article .container-gral-banner {
   color: aliceblue;
   min-width: 50%;
   display: flex;
+  position: relative;
   height: 100%;
   flex-direction: column;
   justify-content: start;
   text-align: center;
   padding: 40px 0px 30px 40px;
 }
-main .banner article .container-card-banner h3 {
+main .banner article .container-gral-banner .container-card-banner {
+  z-index: 500;
+  position: relative;
+  opacity: 1;
+  transition: opacity 3s ease;
+}
+main .banner article .container-gral-banner .container-card-banner h3 {
   padding-bottom: 40px;
   color: rgba(216, 169, 135, 0.801);
   font-weight: normal;
   font-size: 26px;
 }
-main .banner article .container-card-banner .container-parrafo {
+main
+  .banner
+  article
+  .container-gral-banner
+  .container-card-banner
+  .container-parrafo {
   text-align: left;
 }
-main .banner article .container-card-banner .container-parrafo p:nth-child(1) {
+main
+  .banner
+  article
+  .container-gral-banner
+  .container-card-banner
+  .container-parrafo
+  p:nth-child(1) {
   width: 90%;
   font-size: 17px;
   padding-bottom: 30px;
 }
-main .banner article .container-card-banner .container-parrafo p:nth-child(2) {
+main
+  .banner
+  article
+  .container-gral-banner
+  .container-card-banner
+  .container-parrafo
+  p:nth-child(2) {
   color: rgba(216, 169, 135, 0.801);
   font-weight: 600;
   padding-bottom: 50px;
 }
-main .banner article .container-card-banner .banner-btn,
+main .banner article .container-gral-banner .container-card-banner .banner-btn,
 main .banner .banner-end .banner-btn {
   width: 90%;
   display: flex;
   justify-content: center;
 }
-main .banner article .container-card-banner .banner-btn button {
+main
+  .banner
+  article
+  .container-gral-banner
+  .container-card-banner
+  .banner-btn
+  button, main .banner article .container-gral-banner .return .cont-btn-return button {
   background: none;
   border: 3px solid rgba(216, 169, 135, 0.801);
   color: rgba(216, 169, 135, 0.801);
   padding: 10px 20px;
 }
-main .banner article .container-card-banner .banner-btn button:hover {
+main
+  .banner
+  article
+  .container-gral-banner
+  .container-card-banner
+  .banner-btn
+  button:hover, main .banner article .container-gral-banner .return .cont-btn-return button:hover {
   cursor: pointer;
   color: black;
   background: rgba(216, 169, 135, 0.801);
 }
+main .banner article .container-gral-banner .return {
+  display: flex;
+  position: absolute;
+  z-index: -1;
+  transition: opacity 3s e;
+  color: aliceblue;
+  opacity: 0;
+  min-width: 50%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: start;
+  text-align: center;
+}
+
+main .banner article .container-gral-banner .container-card-banner.hide {
+  position: absolute;
+  z-index: -1;
+  transition: opacity 3s ease;
+  opacity: 0;
+}
+main .banner article .container-gral-banner .return h1{
+color: rgb(206, 177, 124) ;
+font-size: 22px;
+font-weight: 0;
+margin-bottom: 20px;
+}
+main .banner article .container-gral-banner .return ul{
+  text-align: left;
+  margin: 0 0 20px 20px;
+}
+
+main .banner article .container-gral-banner .return ul li{
+  padding: 10px 0;
+  list-style: circle;
+}
+main .banner article .container-gral-banner .return.view {
+  opacity: 1;
+  position: relative;
+  transition: opacity 3s ease;
+  z-index: 500;
+}
+
 main .banner .banner-end {
   height: 100%;
   display: flex;
@@ -349,7 +428,7 @@ section .contenedor-principal .flecha-izquierda,
 section .contenedor-principal .flecha-derecha {
   position: absolute;
   border: none;
-  background:rgb(209, 209, 209) ;
+  background: rgb(209, 209, 209);
   font-size: 12px;
   top: calc(50% -25%);
   height: 8%;
@@ -367,34 +446,31 @@ section .contenedor-principal .flecha-derecha {
 section .contenedor-principal .flecha-izquierda:hover,
 section .contenedor-principal .flecha-derecha:hover {
   cursor: pointer;
-  background:rgb(255, 255, 255) ;
+  background: rgb(255, 255, 255);
 }
-section .contenedor-principal .container-carrusel{
+section .contenedor-principal .container-carrusel {
   width: 100%;
   overflow: hidden;
-   background: var(--colorProducto);
+  background: var(--colorProducto);
   scroll-behavior: smooth;
+  padding-left: 20px;
 }
 section .contenedor-principal .container-carrusel .container-card {
   display: flex;
-   height: 100%;
+  height: 100%;
   margin: 0 auto 20px auto;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   flex-wrap: nowrap;
 }
-section
-  .contenedor-principal
-  .container-carrusel
-  .container-card
-  .card {
-   display: flex;
+section .contenedor-principal .container-carrusel .container-card .card {
+  display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 0 20px 0 0;
   height: 100%;
-min-width: 33%; 
-scroll-snap-align: start;
+  min-width: 33.333%;
+  scroll-snap-align: start;
 }
 
 main .container-card .card .card-img {
@@ -456,13 +532,14 @@ footer .container-footer .container-menu .menu {
   flex-direction: column;
   width: 20%;
 }
-footer .container-footer .container-menu .redes{
-    display: flex;
+footer .container-footer .container-menu .redes {
+  display: flex;
   flex-direction: column;
   width: 20%;
   text-align: center;
 }
-footer .container-footer .container-menu .menu p, footer .container-footer .container-menu .redes p {
+footer .container-footer .container-menu .menu p,
+footer .container-footer .container-menu .redes p {
   color: rgb(206, 177, 124);
   font-size: 20px;
   margin-bottom: 8px;
@@ -473,13 +550,14 @@ footer .container-footer .container-menu .menu a {
   padding: 10px 0;
   color: white;
 }
-footer .container-footer .container-menu .redes a{
-    text-decoration: none;
+footer .container-footer .container-menu .redes a {
+  text-decoration: none;
   font-size: 23px;
   padding: 10px 0;
   color: white;
 }
-footer .container-footer .container-menu .menu a:hover, footer .container-footer .container-menu .redes a:hover {
+footer .container-footer .container-menu .menu a:hover,
+footer .container-footer .container-menu .redes a:hover {
   color: rgb(206, 177, 124);
 }
 footer > p {
@@ -498,26 +576,26 @@ footer > p {
     font-size: 25px;
   }
   .container-nav {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        right: 0;
-        background: rgba(0, 0, 0, 0.507);
-        text-align: center;
-        padding: 100px 0;
-        z-index: 100;
-        transform: translateX(100%);
-        visibility: hidden;
-      }
-    .container-nav.visible {
-        transform: translateX(0);
-        visibility: visible;
-        transition: 0.6s;
-        opacity: 1;
-      }
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    background: rgba(0, 0, 0, 0.507);
+    text-align: center;
+    padding: 100px 0;
+    z-index: 100;
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+  .container-nav.visible {
+    transform: translateX(0);
+    visibility: visible;
+    transition: 0.6s;
+    opacity: 1;
+  }
   .mostrar {
     position: absolute;
     top: 40px;
@@ -532,102 +610,97 @@ footer > p {
     font-size: 20px;
     cursor: pointer;
   }
-.container-nav.visible .mostrar {
+  .container-nav.visible .mostrar {
     display: block;
   }
-  header .container-text-header{
-  justify-content: start;
+  header .container-text-header {
+    justify-content: start;
   }
-  header .container-text-header div{
+  header .container-text-header div {
     width: 90%;
     margin: 0 auto;
   }
-   main .banner article {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-main .banner article .container-img-banner {
-  width: 100%;
-}
-main .banner article .container-img-banner img {
-  width: 100%;
-}
-main .banner article .container-card-banner {
-  width: 100%;
-}
- .container-img-banner {
-    order: 2; 
-    margin-top: 20px; 
+  main .banner article {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  main .banner article .container-img-banner {
+    width: 100%;
+  }
+  main .banner article .container-img-banner img {
+    width: 100%;
+  }
+  main .banner article .container-card-banner {
+    width: 100%;
+  }
+  .container-img-banner {
+    order: 2;
+    margin-top: 20px;
   }
   .container-card-banner {
-    order: 1; 
-    margin-bottom: 20px; 
+    order: 1;
+    margin-bottom: 20px;
   }
-main .banner .banner-end {
-  display: flex;
- flex-direction: column;
- text-align: center;
+  main .banner .banner-end {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  main .banner .banner-end .container-card-banner {
+    width: 100%;
+    order: 0;
+  }
+  main .banner .banner-end .container-img-banner-end {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  main .banner .banner-end .container-img-banner-end img {
+    width: 45%;
+  }
+  main .container-caract .container-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  main .container-caract .container-info .info {
+    width: 100%;
+  }
+  main .contact {
+    flex-direction: column;
+  }
+  main .contact .contact-form {
+    width: 100%;
+  }
+  main .contenedor-principal .container-carrusel .container-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  main .container-card .card {
+    width: 60%;
+    margin: 20px 0;
+    min-width: 300px !important;
+  }
+  section .contenedor-indicadores,
+  .contenedor-principal .flecha-izquierda,
+  .contenedor-principal .flecha-derecha {
+    display: none;
+  }
+  main .container-card .card .card-img {
+    height: 55vh;
+  }
+  .productos:nth-child(8) {
+    display: none;
+  }
+  footer .container-footer .container-menu .menu,
+  footer .container-footer .container-menu .redes p {
+    display: none;
+  }
+  footer .container-footer .container-menu {
+    justify-content: right;
+    display: flex;
+  }
+  footer .container-footer .container-img-footer img {
+    min-width: 70px;
+  }
 }
-main .banner .banner-end .container-card-banner {
-  width: 100%;
-  order: 0;
-}
-main .banner .banner-end .container-img-banner-end{
-  width: 100%;
-  display: flex;
-justify-content: center;
-}
-main .banner .banner-end .container-img-banner-end img{
- width: 45%;
-}
-main .container-caract .container-info{
-  flex-direction: column;
-  align-items: center;
-}
-main .container-caract .container-info .info{
-  width: 100%;
-}
-main .contact{
-flex-direction: column;
-}
-main .contact .contact-form{
-width: 100%;
-}
-main .contenedor-principal .container-carrusel .container-card{
-  flex-direction: column;
-  align-items: center;
-}
-main .container-card .card{
-  width: 60%;
-  margin: 20px 0;
-  min-width: 300px !important;
-}
-section .contenedor-indicadores, .contenedor-principal .flecha-izquierda, .contenedor-principal .flecha-derecha{
-  display: none;
-} 
-main .container-card .card .card-img{
-  height: 55vh;
-}
-.productos:nth-child(8){
-  display: none;
-}
-footer .container-footer .container-menu .menu, footer .container-footer .container-menu .redes p{
-  display: none;
-}
-footer .container-footer .container-menu{
-  justify-content: right;
-  display: flex;
-}
-footer .container-footer .container-img-footer img{
-  min-width: 70px;
-}
-}
-
-
-
-
-
-
-
-

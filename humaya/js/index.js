@@ -32,7 +32,6 @@ enlaces.forEach((enlace) => {
 window.addEventListener("resize", updateMostrarVisibility);
 
 let fila = document.querySelector(".container-carrusel");
-let carrusel = document.querySelectorAll(".card");
 let derecha = document.getElementById("flecha-derecha");
 let izquierda = document.getElementById("flecha-izquierda");
 
@@ -53,20 +52,22 @@ izquierda.addEventListener("click", () => {
     indicadoractivo.classList.remove("activo");
   }
 });
-
-const numpag = Math.ceil(carrusel.length / 3);
-for (let i = 0; i < numpag; i++) {
-  const indicador = document.createElement("button");
-  if (i === 0) {
-    indicador.classList.add("activo");
+const crearIndicadores = () => {
+  let carrusel = document.querySelectorAll(".card");
+  const numpag = Math.ceil(carrusel.length / 3);
+  for (let i = 0; i < numpag; i++) {
+    const indicador = document.createElement("button");
+    if (i === 0) {
+      indicador.classList.add("activo");
+    }
+    document.querySelector(".indicadores").appendChild(indicador);
+    indicador.addEventListener("click", (e) => {
+      fila.scrollLeft = i * fila.offsetWidth;
+      document.querySelector(".indicadores .activo").classList.remove("activo");
+      e.target.classList.add("activo");
+    });
   }
-  document.querySelector(".indicadores").appendChild(indicador);
-  indicador.addEventListener("click", (e) => {
-    fila.scrollLeft = i * fila.offsetWidth;
-    document.querySelector(".indicadores .activo").classList.remove("activo");
-    e.target.classList.add("activo");
-  });
-}
+};
 
 // const url = "https://beverages-and-desserts.p.rapidapi.com/desserts";     pruebas con apis externas
 // const options = {
@@ -86,7 +87,7 @@ for (let i = 0; i < numpag; i++) {
 //   },
 // };
 
-const containerCard = document.querySelector("#container-card")
+const containerCard = document.querySelector("#container-card");
 const recetas = [];
 
 const retornarCard = (card) => {
@@ -99,15 +100,15 @@ const retornarCard = (card) => {
                 </div>
               </div>
   `;
-}
-
+};
 
 const recuperar = async () => {
   try {
     const response = await fetch("../productos.json");
     const result = await response.json();
     recetas.push(...result);
-    cargarRecetas(recetas)
+    cargarRecetas(recetas);
+    crearIndicadores();
   } catch (error) {
     console.error(error);
   }
@@ -117,7 +118,39 @@ recuperar();
 
 const cargarRecetas = (array) => {
   array.forEach((arr) => {
-    const data = retornarCard(arr)
-    containerCard.innerHTML += data
+    const data = retornarCard(arr);
+    containerCard.innerHTML += data;
   });
 };
+
+const btnInfo = document.querySelectorAll("#btn-info");
+
+btnInfo.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    
+ const article = btn.closest(".container-gral-banner"); // Obtén el artículo padre del botón
+
+ // Oculta todo el contenido visible dentro del artículo
+    const visibleContent = article.querySelector(".container-card-banner");
+    visibleContent.classList.add("hide");
+    
+    const adicional = article.querySelector(".return")
+    adicional.classList.add("view");
+  });
+});
+
+
+const btnReset = document.querySelectorAll("#btn-reset");
+
+btnReset.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const article = btn.closest("article");
+
+    const adicional = article.querySelector(".return");
+    adicional.classList.remove("view");
+    
+    
+     const visibleContent = article.querySelector(".container-card-banner");
+      visibleContent.classList.remove("hide");
+  });
+});
