@@ -69,36 +69,36 @@ const crearIndicadores = () => {
   }
 };
 
-// const url = "https://beverages-and-desserts.p.rapidapi.com/desserts";     pruebas con apis externas
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "618d245ff0mshf8ed2306b947ee6p1fcdd2jsn139e5673fb6b",
-//     "X-RapidAPI-Host": "beverages-and-desserts.p.rapidapi.com",
-//   },
-// };
-
-// const url = "https://the-birthday-cake-db.p.rapidapi.com/";
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "618d245ff0mshf8ed2306b947ee6p1fcdd2jsn139e5673fb6b",
-//     "X-RapidAPI-Host": "the-birthday-cake-db.p.rapidapi.com",
-//   },
-// };
-
 const containerCard = document.querySelector("#container-card");
 const recetas = [];
 
 const retornarCard = (card) => {
+  let ingredientesHtml = "";
+  let pasosHtml = "";
+
+  card.ingredientes.forEach((ingrediente) => {
+    ingredientesHtml += `<li>${ingrediente}</li>`;
+  });
+
+  card.Pasos.forEach((paso, index) => {
+    pasosHtml += `<div class="container-pasos"> <span>Paso ${index + 1}:</span> <p>${paso}</p> </div>`;
+  });
   return `<div class="card">
                 <div class="card-img"><img src="${card.image}" alt="" /></div>
                 <div class="card-info">
                   <h3>${card.title}</h3>
                   <p>${card.description}</p>
-                  <button id="${card.id}">PREPARACIÓN</button>
+ <div class="contenidOculto">
+           <h4>Ingredientes:</h4>
+           <ul>
+               ${ingredientesHtml}
+           </ul>
+             <h4>Pasos:</h4>
+             ${pasosHtml}
+               </div>
+                  <button  class="rotate-btn" id="${card.id}">PREPARACIÓN</button>
                 </div>
-              </div>
+          </div>
   `;
 };
 
@@ -121,24 +121,21 @@ const cargarRecetas = (array) => {
     const data = retornarCard(arr);
     containerCard.innerHTML += data;
   });
+  deslizar();
 };
 
 const btnInfo = document.querySelectorAll("#btn-info");
 
 btnInfo.forEach((btn) => {
   btn.addEventListener("click", () => {
-    
- const article = btn.closest(".container-gral-banner"); // Obtén el artículo padre del botón
-
- // Oculta todo el contenido visible dentro del artículo
+    const article = btn.closest(".container-gral-banner");
     const visibleContent = article.querySelector(".container-card-banner");
     visibleContent.classList.add("hide");
-    
-    const adicional = article.querySelector(".return")
+
+    const adicional = article.querySelector(".return");
     adicional.classList.add("view");
   });
 });
-
 
 const btnReset = document.querySelectorAll("#btn-reset");
 
@@ -148,9 +145,47 @@ btnReset.forEach((btn) => {
 
     const adicional = article.querySelector(".return");
     adicional.classList.remove("view");
-    
-    
-     const visibleContent = article.querySelector(".container-card-banner");
-      visibleContent.classList.remove("hide");
+
+    const visibleContent = article.querySelector(".container-card-banner");
+    visibleContent.classList.remove("hide");
   });
 });
+
+function deslizar() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(function (card) {
+    const rotateBtn = card.querySelector(".rotate-btn");
+    const contentHidden = card.querySelector(".contenidOculto");
+    let isOpen = false;
+
+    rotateBtn.addEventListener("click", function () {
+      isOpen = !isOpen;
+      if (isOpen) {
+        var contentHeight = contentHidden.scrollHeight + "px";
+        contentHidden.style.maxHeight = contentHeight;
+        rotateBtn.textContent = "CERRAR";
+      } else {
+        contentHidden.style.maxHeight = "0";
+        rotateBtn.textContent = "PREPARACION";
+      }
+    });
+  });
+}
+
+const contenedorPrincipal = document.querySelector(".contenedor-principal");
+const flechaIzquierda = document.querySelector(".flecha-izquierda");
+const flechaDerecha = document.querySelector(".flecha-derecha");
+
+const alturaMaximaFlechas = 435;
+
+function ajustarPosicionFlechas() {
+  const alturaContenedor = contenedorPrincipal.clientHeight;
+  if (alturaContenedor < alturaMaximaFlechas) {
+    flechaIzquierda.style.top = "220px";
+    flechaDerecha.style.top = "220px";
+  } else {
+    flechaIzquierda.style.top = "50%";
+    flechaDerecha.style.top = "50%";
+  }
+}
+ajustarPosicionFlechas();
