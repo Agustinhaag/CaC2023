@@ -81,7 +81,9 @@ const retornarCard = (card) => {
   });
 
   card.Pasos.forEach((paso, index) => {
-    pasosHtml += `<div class="container-pasos"> <span>Paso ${index + 1}:</span> <p>${paso}</p> </div>`;
+    pasosHtml += `<div class="container-pasos"> <span>Paso ${
+      index + 1
+    }:</span> <p>${paso}</p> </div>`;
   });
   return `<div class="card">
                 <div class="card-img"><img src="${card.image}" alt="" /></div>
@@ -102,10 +104,13 @@ const retornarCard = (card) => {
   `;
 };
 
+const url = "https://api-humaya.onrender.com";
+
 const recuperar = async () => {
   try {
-    const response = await fetch("../productos.json");
+    const response = await fetch(url);
     const result = await response.json();
+    console.log(result);
     recetas.push(...result);
     cargarRecetas(recetas);
     crearIndicadores();
@@ -163,7 +168,7 @@ function deslizar() {
       if (isOpen) {
         var contentHeight = contentHidden.scrollHeight + "px";
         contentHidden.style.maxHeight = contentHeight;
-        rotateBtn.textContent = "CERRAR";
+        rotateBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
       } else {
         contentHidden.style.maxHeight = "0";
         rotateBtn.textContent = "PREPARACION";
