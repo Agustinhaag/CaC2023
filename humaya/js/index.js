@@ -109,8 +109,7 @@ const url = "https://api-humaya.onrender.com";
 const recuperar = async () => {
   try {
     const response = await fetch(url);
-    const result = await response.json();
-    console.log(result);
+    const result = await response.json()
     recetas.push(...result);
     cargarRecetas(recetas);
     crearIndicadores();
