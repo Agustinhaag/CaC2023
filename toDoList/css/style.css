@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    height: 100vh;
+    background-image: url(../img/montaña.jpg);
+    background-size: cover;
+    padding-top: 20px;
+}
+main .container-gral{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 45%;
+    margin: 0 auto;
+   align-items: center;
+   min-width: 250px;
+    height: 90%;
+    background-color: rgba(192, 191, 191, 0.404);
+}
+.container-gral h2{
+    margin-top: 20px;
+    text-decoration: 1px underline black;
+    text-underline-offset: 3px;
+}
+.container-gral .container-form, .container-gral .container-task{
+    display: flex;
+  align-items: center;
+    height: 25%;
+    width: 90%;
+}
+.container-form form{
+    width: 100%;
+    min-width: 240px;
+}
+.container-gral .container-form form input{
+    background: none;
+    border: 1px solid rgba(223, 223, 223, 0.959);
+    padding: 15px 0;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    line-height: normal;
+    font-size: 13px;
+    width: 75%;
+}
+input::placeholder{
+    padding-left: 7px;
+    color: rgba(255, 255, 255, 0.596);
+}
+.container-gral .container-form form button{
+border-radius: 12px;
+margin-left: 10px;
+padding: 12px ;
+}
+
+ul{
+    padding-left: 5px;
+    width: 100%;
+}
+.container-gral .container-task ul li{
+    background: rgb(34, 34, 34);
+    list-style: none;
+    border-radius: 10px;
+    padding: 8px 6px ;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+li button{
+    background: none;
+    color: red;
+    border: none;
+}
+@media(max-width:768px){  
+    .container-gral .container-form form input{
+        width: 60%;
+    }
+}
