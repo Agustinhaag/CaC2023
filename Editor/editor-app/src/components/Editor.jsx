@@ -1,22 +1,46 @@
-import React, { useState } from "react";
-import html2canvas from "html2canvas";
+import React, { useState, useEffect } from "react";
+import html2canvas from 'html2canvas';
 import "../Editor.css";
 
 const Editor = () => {
-  const [imgmeme, setImgmeme] = useState();
-  const [textmeme, setTextmeme] = useState();
-  const [colorTexto, setColor] = useState();
-  const [font, setFontsize] = useState();
-  const [positionY, setPositionY] = useState();
-  const [positionX, setPositionX] = useState();
-  const [fontW, setFontw] = useState();
-  const [file, setFile] = useState(null);
+  const [textmeme, setTextmeme] = useState(); //para el texto
+  const [colorTexto, setColor] = useState();  //para el color
+  const [font, setFontsize] = useState();  //tipo de fuente
+  const [positionY, setPositionY] = useState();  //posicionY
+  const [positionX, setPositionX] = useState();  //posicionX
+  const [fontW, setFontw] = useState();   //fuente grosor
+  const [file, setFile] = useState(null);  //input file
+  const [listImage, setListImage] = useState([]);  //lista de los tags
+  const [resultApi, setResultApi] = useState([]);  //el result del fetch
+  const [selectedImageURL, setSelectedImageURL] = useState(null);  // la url de la img a descargar
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetch(
+          "https://pixabay.com/api/?key=39931870-1dccddaea0f53ff2f58effd86"
+        );
+        const response = await data.json();
+        setResultApi(response);
+        const tags =  response.hits.map((item) => item.tags);
+        setListImage(tags);
+      } catch (error) {
+        throw error;
+      }
+    };
+    fetchData();
+  }, []);
 
   const textomeme = (e) => {
     setTextmeme(e.target.value);
   };
   const guardarImg = (e) => {
-    setImgmeme(e.target.value);
+    const selectedTag = e.target.value;
+    const selectedImage = resultApi.hits.find(
+      (item) => item.tags === selectedTag
+    );
+    setSelectedImageURL(selectedImage ? selectedImage.webformatURL : null);
+   
   };
   const colorText = (e) => {
     setColor(e.target.value);
@@ -26,10 +50,13 @@ const Editor = () => {
   };
   const borrar = () => {
     setFile(null);
-    setImgmeme(null);
+    setSelectedImageURL(null);
+    const text = document.querySelector("#text");
     const input = document.querySelector("#img");
     if (input) {
       input.value = "";
+      text.value = "";
+      setTextmeme(null);
     }
   };
   const fontWeight = (e) => {
@@ -48,10 +75,12 @@ const Editor = () => {
   };
 
   const descargar = () => {
-    html2canvas(document.querySelector("#figure")).then(function (canvas) {
-      let img = canvas.toDataURL("memes/jpg");
+    const figure = document.querySelector("#figure");
+    const html2canvasProxy = html2canvas(figure, { useCORS: true });
+    html2canvasProxy.then(function (canvas) {
+      let img = canvas.toDataURL("image/png");
       let link = document.createElement("a");
-      link.download = "memepersonal.jpg";
+      link.download = "memepersonal.png";
       link.href = img;
       link.click();
     });
@@ -75,12 +104,14 @@ const Editor = () => {
             <div className="container-input">
               <label>Elegi la imagen:</label>
               <select onChange={guardarImg} name="" id="">
-              <option value="" disabled selected>Seleccione una opción</option>
-                <option value={1}>Perro</option>
-                <option value={2}>Hombre</option>
-                <option value={3}>Mujeres</option>
-                <option value={4}>Gato</option>
-                <option value={5}>Bebe</option>
+                <option value="" disabled selected>
+                  Seleccione una opción
+                </option>
+                {listImage.map((image, index) => (
+                  <option value={image} key={index}>
+                    {image}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="container-input">
@@ -95,7 +126,9 @@ const Editor = () => {
             <div className="container-input">
               <label htmlFor="">Ajuste el grosor</label>
               <select name="" onChange={fontWeight} id="">
-                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="" disabled selected>
+                  Seleccione una opción
+                </option>
                 <option value="200">Leve</option>
                 <option value="400">Normal</option>
                 <option value="600">Mediano</option>
@@ -113,22 +146,27 @@ const Editor = () => {
                   top: `${positionY}px`,
                   left: `${positionX}px`,
                   fontWeight: `${fontW}`,
-                  
                 }}
               >
                 {textmeme}
               </p>
               {file ? (
                 <img className="" src={file} alt="meme" />
-              ) : (
-                <img className="" src={`memes/${imgmeme}.jpg`} alt="Meme" />
-              )}
+              ) : selectedImageURL ? (
+                <img className="" src={selectedImageURL} alt="Meme" />
+              ) : null}
             </figure>
             <div className="container-btn">
-              <button onClick={descargar} type="submit" className="btn btn-outline-success">
+              <button
+                onClick={descargar}
+                type="submit"
+                className="btn btn-outline-success"
+              >
                 Descargar
               </button>
-              <button onClick={borrar} className="btn btn-outline-danger">Borrar</button>
+              <button onClick={borrar} className="btn btn-outline-danger">
+                Borrar
+              </button>
             </div>
           </div>
           <div className="container-form">
@@ -160,7 +198,7 @@ const Editor = () => {
             </div>
             <div className="container-input">
               <label htmlFor="img" className="label">
-              Seleccione su imagen:
+                Seleccione su imagen:
               </label>
               <input
                 type="file"

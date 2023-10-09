@@ -87,19 +87,19 @@ const retornarCard = (card) => {
   });
   return `<div class="card">
                 <div class="card-img"><img src="${card.image}" alt="" /></div>
-                <div class="card-info">
+            <div class="card-info">
                   <h3>${card.title}</h3>
                   <p>${card.description}</p>
- <div class="contenidOculto">
-           <h4>Ingredientes:</h4>
-           <ul>
-               ${ingredientesHtml}
-           </ul>
-             <h4>Pasos:</h4>
-             ${pasosHtml}
-               </div>
+              <div class="contenidOculto">
+                     <h4>Ingredientes:</h4>
+                     <ul>
+                     ${ingredientesHtml}
+                     </ul>
+                     <h4>Pasos:</h4>
+                     ${pasosHtml}
+              </div>
                   <button  class="rotate-btn" id="${card.id}">PREPARACIÓN</button>
-                </div>
+            </div>
           </div>
   `;
 };
@@ -165,7 +165,7 @@ function deslizar() {
     rotateBtn.addEventListener("click", function () {
       isOpen = !isOpen;
       if (isOpen) {
-        var contentHeight = contentHidden.scrollHeight + "px";
+        let contentHeight = contentHidden.scrollHeight + "px";
         contentHidden.style.maxHeight = contentHeight;
         rotateBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
       } else {
